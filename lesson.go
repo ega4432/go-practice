@@ -1,25 +1,21 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
 func main() {
-	fmt.Println("Hello World")
-	fmt.Println("Hoge", "Fuga")
-	fmt.Println(string("Hello World"[0]))
+	t, f := true, false
+	fmt.Printf("%T %v %t\n", t, 1, t)
+	fmt.Printf("%T %v %t\n", f, 0, f)
 
-	var s string = "Hello World"
+	fmt.Println(true && true)
+	fmt.Println(true && false)
+	fmt.Println(false && false)
 
-	s = strings.Replace(s, "H", "X", 1)
-	fmt.Println(s)
-	fmt.Println(strings.Contains(s, "World"))
+	fmt.Println(true || true)
+	fmt.Println(true || false)
+	fmt.Println(false || false)
 
-	fmt.Println(`Test
-							Test
-	Test`)
-
-	fmt.Println("\"")
-	fmt.Print(`"`)
+	fmt.Println(!true)
+	fmt.Println(!false)
+	fmt.Printf("%#v", t)
 }
