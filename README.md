@@ -10,3 +10,7 @@
 - string
 - bool
 - type valiable
+
+## References
+
+- [Packages](https://golang.org/pkg/)

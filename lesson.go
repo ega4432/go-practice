@@ -1,7 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	fmt.Println("Hello world!", "TEST TEST")
+	fmt.Println("Hello world!", time.Now())
 }
