@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+func init() {
+	fmt.Println("this it init!")
+}
+
 func bazz() {
 	fmt.Println("Bazz")
 }
