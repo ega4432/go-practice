@@ -2,6 +2,13 @@ package main
 
 import "fmt"
 
+const Pi = 3.14
+
+const (
+	Username = "test_user"
+	Password = "test_pass"
+)
+
 var (
 	i    int     = 1
 	f64  float64 = 1.2
@@ -21,4 +28,5 @@ func foo() {
 func main() {
 	fmt.Println(i, f64, s, t, f)
 	foo()
+	fmt.Println(Pi, Username, Password)
 }
