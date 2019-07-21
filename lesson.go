@@ -5,27 +5,34 @@ import (
 )
 
 func main() {
-	n := make([]int, 3, 5)
-	fmt.Printf("len=%d cap=%d value=%v\n", len(n), cap(n), n)
+	m := map[string]int{"apple": 100, "banana": 200}
+	fmt.Println(m)
+	fmt.Println(m["apple"])
 
-	n = append(n, 0, 0)
-	fmt.Printf("len=%d cap=%d value=%v\n", len(n), cap(n), n)
+	m["banana"] = 300
+	fmt.Println(m)
 
-	n = append(n, 1, 2, 3, 4)
-	fmt.Printf("len=%d cap=%d value=%v\n", len(n), cap(n), n)
+	m["new"] = 500
+	fmt.Println(m)
 
-	a := make([]int, 3)
-	fmt.Printf("len=%d cap=%d value=%v\n", len(a), cap(a), a)
+	fmt.Println(m["nothing"])
 
-	b := make([]int, 0)
-	var c []int
-	fmt.Printf("len=%d cap=%d value=%v\n", len(b), cap(b), b)
-	fmt.Printf("len=%d cap=%d value=%v\n", len(c), cap(c), c)
+	v, hoge := m["apple"]
+	fmt.Println(v, hoge)
 
-	c = make([]int, 0, 5)
-	for i := 0; i < 5; i++ {
-		c = append(c, i)
-		fmt.Println(c)
+	v2, hoge2 := m["nothing"]
+	fmt.Println(v2, hoge2)
+
+	m2 := make(map[string]int)
+	m2["pc"] = 500000
+	fmt.Println(m2)
+
+	//var m3 map[string]int
+	//m3["pc"] = 500
+	//fmt.Println(m3)
+
+	var s []int
+	if s == nil {
+		fmt.Println("This is nil!!!!")
 	}
-	fmt.Println(c)
 }
