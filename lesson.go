@@ -2,35 +2,33 @@ package main
 
 import "fmt"
 
-func add(x, y int) (int, int) {
-	return x + y, x - y
+func incrementGenerator() func() int {
+	x := 0
+	return func() int {
+		x++
+		return x
+	}
 }
 
-func cal(price, item int) (result int) {
-	result = price * item
-	return
-}
-
-func convert(price int) float64 {
-	return float64(price)
+func circleArea(pi float64) func(radius float64) float64 {
+	return func(radius float64) float64 {
+		return pi * radius * radius
+	}
 }
 
 func main() {
-	r1, r2 := add(20, 10)
-	fmt.Println(r1, r2)
+	counter := incrementGenerator()
+	fmt.Println(counter())
+	fmt.Println(counter())
+	fmt.Println(counter())
+	fmt.Println(counter())
+	fmt.Println(counter())
 
-	r3 := cal(1000, 3)
-	fmt.Println(r3)
+	c1 := circleArea(3.14)
+	fmt.Println(c1(2))
+	fmt.Println(c1(3))
 
-	r4 := convert(234)
-	fmt.Println(r4)
-
-	f := func(x int) {
-		fmt.Println("inner func", x)
-	}
-	f(1)
-
-	func(x int) {
-		fmt.Println("inner func", x)
-	}(2)
+	c2 := circleArea(3)
+	fmt.Println(c2(2))
+	fmt.Println(c2(3))
 }
