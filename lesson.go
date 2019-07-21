@@ -1,25 +1,19 @@
 package main
 
-import (
-	"fmt"
-	"log"
-	"os"
-)
+import "fmt"
 
+func thirdPartyConnnectDB()  {
+	panic("Unable to connect database!")
+}
+
+func save()  {
+	defer func() {
+		s := recover()
+		fmt.Println(s)
+	}()
+	thirdPartyConnnectDB()
+}
 func main() {
-	file, err := os.Open("./lesson.go")
-	if err != nil {
-		log.Fatalln("ERROR1")
-	}
-	defer file.Close()
-	data := make([]byte, 100)
-	count, err := file.Read(data)
-	if err != nil {
-		log.Fatalln("ERROR2")
-	}
-	fmt.Println(count, string(data))
-
-	if err = os.Chdir("test"); err != nil {
-		log.Fatalln("ERROR3")
-	}
+	save()
+	fmt.Println("OK?")
 }
