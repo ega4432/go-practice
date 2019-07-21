@@ -2,38 +2,30 @@ package main
 
 import "fmt"
 
-func by2(num int) string {
-	if num%2 == 0 {
-		return "Odd"
-	} else {
-		return "Even"
-	}
-}
 func main() {
-	num := 7
-	if num%2 == 0 {
-		fmt.Println("by 2")
-	} else if num%3 == 0 {
-		fmt.Println("by 3")
-	} else {
-		fmt.Println("else!")
+	for i := 0; i < 10; i++ {
+		if i == 3 {
+			fmt.Println("continue")
+			continue
+		}
+
+		if i > 5 {
+			fmt.Println("beak")
+			break
+		}
+		fmt.Println(i)
 	}
 
-	x, y := 10, 10
-	if x == 10 && y == 10 {
-		fmt.Println("$$")
-	} else if x == 10 || y == 10 {
-		fmt.Println("||")
-	} else {
-		fmt.Println("false")
+	sum := 1
+	fmt.Println(sum)
+	for sum < 10 {
+		sum += sum
+		fmt.Println(sum)
 	}
+	fmt.Println(sum)
 
-	result := by2(5)
-	if result == "Odd" {
-		fmt.Println("This num is odd!")
-	} else if result == "Even" {
-		fmt.Println("This num is Even!")
-	} else {
-		fmt.Println("ERROR!")
+	// infinite
+	for {
+		fmt.Println("infinite!")
 	}
 }
