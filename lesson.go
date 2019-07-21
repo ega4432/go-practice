@@ -2,18 +2,49 @@ package main
 
 import "fmt"
 
-func thirdPartyConnnectDB()  {
-	panic("Unable to connect database!")
-}
-
-func save()  {
-	defer func() {
-		s := recover()
-		fmt.Println(s)
-	}()
-	thirdPartyConnnectDB()
-}
 func main() {
-	save()
-	fmt.Println("OK?")
+	// Q1 . 以下のスライスから一番小さい数を探して出力するコードを書いてください。
+	l := []int{100, 300, 23, 11, 23, 2, 4, 6, 4}
+	minum := l[0]
+	for i := 0; i < len(l); i++ {
+		if l[i] < minum {
+			minum = l[i]
+		}
+	}
+	fmt.Println(minum)
+
+	// Answer
+	var min int
+	for i, num := range l {
+		if i == 0 {
+			min = num
+			continue
+		}
+		if min >= num {
+			min = num
+		}
+	}
+	fmt.Println(min)
+
+	// Q2. 以下の果物の価格の合計を出力するコードを書いてください。
+	m := map[string]int{
+		"apple":  200,
+		"banana": 300,
+		"grapes": 150,
+		"orange": 80,
+		"papaya": 500,
+		"kiwi":   90,
+	}
+	//t := 0
+	//for i := 0; i < len(m); i++ {
+	//	fmt.Println(m[i])
+	//}
+	// range を使うところまではわかった
+
+	// Answer
+	sum := 0
+	for _, v := range m {
+		sum += v
+	}
+	fmt.Println(sum)
 }
