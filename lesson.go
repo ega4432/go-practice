@@ -2,31 +2,24 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"log"
 	"os"
 )
 
-func LoggingSettings(logFile string) {
-	logfile, _ := os.OpenFile(logFile, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
-	multiLogFile := io.MultiWriter(os.Stdout, logfile)
-	log.SetFlags(log.Ldate | log.Ltime | log.Llongfile)
-	log.SetOutput(multiLogFile)
-}
-
 func main() {
-	LoggingSettings("test.log")
-
-	_, err := os.Open("hoge")
+	file, err := os.Open("./lesson.go")
 	if err != nil {
-		log.Fatalln("Exit", err)
+		log.Fatalln("ERROR1")
 	}
+	defer file.Close()
+	data := make([]byte, 100)
+	count, err := file.Read(data)
+	if err != nil {
+		log.Fatalln("ERROR2")
+	}
+	fmt.Println(count, string(data))
 
-	log.Println("logging")
-	log.Printf("%T %v", "test", "test")
-
-	log.Fatalln("error!")
-	//終了される
-
-	fmt.Println("ok")
+	if err = os.Chdir("test"); err != nil {
+		log.Fatalln("ERROR3")
+	}
 }
