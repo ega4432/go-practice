@@ -1,32 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+func getOSName() string {
+	return "hogefuga"
+}
 
 func main() {
-	l := []string{"python", "go", "java"}
-
-	for i := 0; i < len(l); i++{
-		fmt.Println(i, l[i])
-	}
-	for i, v := range l{
-		fmt.Println(i, v)
-	}
-
-	for _, v := range l{
-		fmt.Println(v)
+	switch os := getOSName(); os {
+	case "mac":
+		fmt.Println("Mac!")
+	case "windows":
+		fmt.Println("Win!")
+	default:
+		fmt.Println("other...", os)
 	}
 
-	m := map[string]int{"apple": 100, "banana":200}
+	t := time.Now().Hour()
+	fmt.Println(t)
 
-	for k, v:= range m{
-		fmt.Println(k, v)
-	}
-
-	for k := range m{
-		fmt.Println(k)
-	}
-
-	for _, v:= range m{
-		fmt.Println(v)
+	switch {
+	case t > 3 && t < 12:
+		fmt.Println("Morning")
+	case t > 12 && t < 18:
+		fmt.Println("Afternoon")
+	case t > 18 && t < 21:
+		fmt.Println("NIGHT...")
+	case t > 21:
+		fmt.Println("Midnight")
+	default:
+		fmt.Println("Time is Unknown")
 	}
 }
