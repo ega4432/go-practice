@@ -2,36 +2,23 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"os"
 )
 
-func getOSName() string {
-	return "hogefuga"
+func foo()  {
+	defer fmt.Println("world foo")
+	fmt.Println("Hello foo")
 }
 
 func main() {
-	switch os := getOSName(); os {
-	case "mac":
-		fmt.Println("Mac!")
-	case "windows":
-		fmt.Println("Win!")
-	default:
-		fmt.Println("other...", os)
-	}
+	defer fmt.Println("world")
 
-	t := time.Now().Hour()
-	fmt.Println(t)
+	fmt.Println("Hello")
+	foo()
 
-	switch {
-	case t > 3 && t < 12:
-		fmt.Println("Morning")
-	case t > 12 && t < 18:
-		fmt.Println("Afternoon")
-	case t > 18 && t < 21:
-		fmt.Println("NIGHT...")
-	case t > 21:
-		fmt.Println("Midnight")
-	default:
-		fmt.Println("Time is Unknown")
-	}
+	file, _ := os.Open("./lesson.go")
+	defer file.Close()
+	data := make([]byte, 1000)
+	file.Read(data)
+	fmt.Println(string(data))
 }
