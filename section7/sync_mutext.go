@@ -7,7 +7,7 @@ import (
 )
 
 type Counter struct {
-	v map[string]int
+	v   map[string]int
 	mux sync.Mutex
 }
 
@@ -17,7 +17,7 @@ func (c *Counter) Inc(key string) {
 	c.v[key]++
 }
 
-func (c *Counter) Value(key string) int{
+func (c *Counter) Value(key string) int {
 	c.mux.Lock()
 	defer c.mux.Unlock()
 	return c.v[key]
@@ -38,6 +38,6 @@ func main() {
 			c.Inc("Key")
 		}
 	}()
-	time.Sleep(1 *time.Second)
+	time.Sleep(1 * time.Second)
 	fmt.Println(c, c.Value("Key"))
 }

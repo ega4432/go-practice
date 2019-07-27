@@ -8,12 +8,12 @@ import (
 // A Tour of Go を参考にしている（ https://tour.golang.org/concurrency/6 ）
 
 func main() {
-	tick := time.Tick(100 * time.Millisecond)     // Tick, After は channel を返す
+	tick := time.Tick(100 * time.Millisecond) // Tick, After は channel を返す
 	boom := time.After(500 * time.Millisecond)
 	for {
 		select {
 		case <-tick:
-		// case t := <-tick: とすることで channel で何が渡ってきているのか中身を知ることもできる
+			// case t := <-tick: とすることで channel で何が渡ってきているのか中身を知ることもできる
 			fmt.Println("tick.")
 		case <-boom:
 			fmt.Println("BOOM!")
