@@ -3,16 +3,16 @@ package main
 import "fmt"
 
 // channel を使うと goroutine でデータのやりとりができる
-func goroutine(s []int, c chan int)  {
+func goroutine(s []int, c chan int) {
 	sum := 0
-	for _, v := range s{
+	for _, v := range s {
 		sum += v
 		c <- sum
 	}
 	close(c)
 }
 
-func main()  {
+func main() {
 	s := []int{1, 2, 3, 4, 5}
 	c := make(chan int, len(s))
 	go goroutine(s, c)

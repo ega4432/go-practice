@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main()  {
+func main() {
 	// バッファの数を 2 としておく
 	ch := make(chan int, 2)
 	ch <- 100
