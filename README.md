@@ -2,7 +2,7 @@
 
 ## Sections
 
-1. Instoraction
+1. instruction
 2. Settings
 3. Definition
 4. Statement
