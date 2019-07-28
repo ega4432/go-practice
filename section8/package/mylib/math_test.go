@@ -16,4 +16,7 @@ func TestAverage(t *testing.T) {
 	}
 	// テストの実行は "$ go test ./..." or Golan　からできる
 	// testing フレームワーク Ginkgo を使っても良い( https://onsi.github.io/ginkgo/ )
+
+	// gofmt <file name> で綺麗なフォーマットを表示してくれる
+	// 勝手に整形までして欲しい時はオプションで -w をつける
 }
