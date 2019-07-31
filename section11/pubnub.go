@@ -9,7 +9,7 @@ import (
 // https://lightning.bitflyer.com/docs
 func main() {
 	//subKey := "sub-c-52a9ab50-291b-11e5-baaa-0619f8945a4f"
-	pubnub := messaging.NewPubnub("demo", "demo", "","", false, "", nil)
+	pubnub := messaging.NewPubnub("demo", "demo", "", "", false, "", nil)
 
 	sucCha := make(chan []byte)
 	errCha := make(chan []byte)
