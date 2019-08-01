@@ -30,11 +30,13 @@ func loadPage(title string) (*Page, error) {
 func viewHandler(w http.ResponseWriter, r *http.Request) {
 	// /view/test
 	title := r.URL.Path[len("/view/"):]
+	title = "section13/" + title
+	log.Println(title)
 	p, _ := loadPage(title)
 	fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
 }
 
 func main() {
-	http.HandlerFunc("./view/", viewHandler)
+	http.HandleFunc("/view/", viewHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
