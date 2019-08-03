@@ -37,7 +37,6 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 	// /view/test
 	title := r.URL.Path[len("/view/"):]
 	title = "section13/" + title
-	log.Println(title)
 	p, _ := loadPage(title)
 	// fmt.Fprintf(w, "<h1>%s</h1><div>%s</div>", p.Title, p.Body)
 	// "section13" という文字列を置換して edit 用のリンクを使いたい
@@ -48,16 +47,30 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 func editHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/edit/"):]
 	title = "section13/" + title
-	log.Println(title)
 	p, err := loadPage(title)
 	if err != nil {
 		p = &Page{Title: title}
 	}
+	p.Title = strings.Replace(p.Title, "section13/", "", 1)
 	renderTemplate(w, "section13/edit", p)
+}
+
+func saveHandler(w http.ResponseWriter, r *http.Request) {
+	title := r.URL.Path[len("/save/"):]
+	body := r.FormValue("body")
+	p := &Page{Title: title, Body: []byte(body)}
+	err := p.save()
+	if err != nil {
+		log.Println("ERROR")
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
 func main() {
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/edit/", editHandler)
+	http.HandleFunc("/save/", saveHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
