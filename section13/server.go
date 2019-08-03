@@ -59,7 +59,12 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	title := r.URL.Path[len("/save/"):]
 	body := r.FormValue("body")
 	p := &Page{Title: title, Body: []byte(body)}
+	log.Println(title)
+	p.Title = "section13/" + p.Title
 	err := p.save()
+	log.Println(title)
+	p.Title = strings.Replace(p.Title, "section13/", "", 1)
+	log.Println(title)
 	if err != nil {
 		log.Println("ERROR")
 		http.Error(w, err.Error(), http.StatusInternalServerError)
