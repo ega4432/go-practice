@@ -22,4 +22,4 @@
 
 ## Next steps
 
-- [yoshimitsuEgashira/a-tour-of-go](https://github.com/yoshimitsuEgashira/a-tour-of-go)
+- [ysmtegsr/a-tour-of-go](https://github.com/yoshimitsuEgashira/a-tour-of-go)
